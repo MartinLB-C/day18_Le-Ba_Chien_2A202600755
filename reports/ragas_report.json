@@ -1,0 +1,91 @@
+{
+  "aggregate": {
+    "faithfulness": 0.9157142857142858,
+    "answer_relevancy": 0.8839307915512522,
+    "context_precision": 0.9499999999316664,
+    "context_recall": 0.875
+  },
+  "num_questions": 20,
+  "failures": [
+    {
+      "question": "Bao lâu phải đổi mật khẩu một lần?",
+      "worst_metric": "faithfulness",
+      "score": 0.0,
+      "avg_score": 0.7061971884286862,
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature"
+    },
+    {
+      "question": "Nếu cần mua một chiếc laptop 30 triệu cho nhân viên mới, ai phê duyệt và cần gì từ phòng CNTT?",
+      "worst_metric": "context_precision",
+      "score": 0.3333333333,
+      "avg_score": 0.7106535486699977,
+      "diagnosis": "Too many irrelevant chunks",
+      "suggested_fix": "Add reranking or metadata filter"
+    },
+    {
+      "question": "Thâm niên bao nhiêu năm thì được cộng thêm ngày phép?",
+      "worst_metric": "context_recall",
+      "score": 0.5,
+      "avg_score": 0.7770602065417795,
+      "diagnosis": "Missing relevant chunks",
+      "suggested_fix": "Improve chunking or add BM25"
+    },
+    {
+      "question": "Có cần kích hoạt xác thực đa yếu tố (MFA) không?",
+      "worst_metric": "context_recall",
+      "score": 0.5,
+      "avg_score": 0.7952496077635197,
+      "diagnosis": "Missing relevant chunks",
+      "suggested_fix": "Improve chunking or add BM25"
+    },
+    {
+      "question": "Thông tin lương thuộc cấp độ phân loại dữ liệu nào?",
+      "worst_metric": "context_recall",
+      "score": 0.5,
+      "avg_score": 0.8413450268091379,
+      "diagnosis": "Missing relevant chunks",
+      "suggested_fix": "Improve chunking or add BM25"
+    },
+    {
+      "question": "Nghỉ phép không lương 20 ngày cần ai phê duyệt?",
+      "worst_metric": "context_recall",
+      "score": 0.5,
+      "avg_score": 0.8497772497549211,
+      "diagnosis": "Missing relevant chunks",
+      "suggested_fix": "Improve chunking or add BM25"
+    },
+    {
+      "question": "Một nhân viên Senior có 9 năm thâm niên được nghỉ bao nhiêu ngày phép năm và lương trong khoảng nào?",
+      "worst_metric": "context_recall",
+      "score": 0.5,
+      "avg_score": 0.8709453476087426,
+      "diagnosis": "Missing relevant chunks",
+      "suggested_fix": "Improve chunking or add BM25"
+    },
+    {
+      "question": "Nhân viên được tài trợ khóa học 25 triệu, nghỉ việc sau 8 tháng hoàn thành khóa học. Phải hoàn trả bao nhiêu?",
+      "worst_metric": "faithfulness",
+      "score": 0.7142857142857143,
+      "avg_score": 0.8735294429923235,
+      "diagnosis": "LLM hallucinating",
+      "suggested_fix": "Tighten prompt, lower temperature"
+    },
+    {
+      "question": "Muốn mua thiết bị trị giá 55 triệu cần ai phê duyệt?",
+      "worst_metric": "answer_relevancy",
+      "score": 0.7227273917554428,
+      "avg_score": 0.9306818479138607,
+      "diagnosis": "Answer doesn't match question",
+      "suggested_fix": "Improve prompt template"
+    },
+    {
+      "question": "Lương thử việc của nhân viên Junior mức cao nhất là bao nhiêu?",
+      "worst_metric": "context_precision",
+      "score": 0.8333333332916666,
+      "avg_score": 0.9354268353908161,
+      "diagnosis": "Too many irrelevant chunks",
+      "suggested_fix": "Add reranking or metadata filter"
+    }
+  ]
+}
