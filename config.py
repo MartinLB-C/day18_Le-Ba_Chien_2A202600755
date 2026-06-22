@@ -6,8 +6,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # --- API Keys ---
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
-
+ALIBABA_API_KEY = os.getenv("ALIBABA_API_KEY", "")
+LLM_BASE_URL = os.getenv("LLM_BASE_URL")
+LLM_MODEL_NAME = os.getenv("LLM_MODEL_NAME")
 # --- Qdrant ---
 QDRANT_HOST = "localhost"
 QDRANT_PORT = 6333
