@@ -12,7 +12,7 @@ import os, sys
 from dataclasses import dataclass, field
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from config import ALIBABA_API_KEY, LLM_BASE_URL, LLM_MODEL_NAME
+from config import ALIBABA_API_KEY, LLM_BASE_URL, LLM_MODEL_NAME  # type: ignore
 
 
 @dataclass

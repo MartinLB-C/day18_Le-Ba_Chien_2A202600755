@@ -34,12 +34,26 @@ def build_pipeline():
     # Step 2: Enrichment (M5)
     t0 = time.time()
     print(f"\n[2/4] Enriching {len(all_chunks)} chunks (M5, 1 API call/chunk)...", flush=True)
-    enriched = enrich_chunks(all_chunks)
-    if enriched:
-        all_chunks = [{"text": e.enriched_text, "metadata": e.auto_metadata} for e in enriched]
-        print(f"  ✓ Enriched {len(enriched)} chunks ({time.time()-t0:.1f}s)", flush=True)
+    
+    import json
+    cache_path = os.path.join("data", "enriched_chunks_cache.json")
+    if os.path.exists(cache_path):
+        print("  ✓ Loading enriched chunks from cache (skip API calls)...", flush=True)
+        with open(cache_path, "r", encoding="utf-8") as f:
+            all_chunks = json.load(f)
     else:
-        print("  ⚠️  M5 not implemented — using raw chunks", flush=True)
+        enriched = enrich_chunks(all_chunks)
+        if enriched:
+            all_chunks = [{"text": e.enriched_text, "metadata": e.auto_metadata} for e in enriched]
+            print(f"  ✓ Enriched {len(enriched)} chunks ({time.time()-t0:.1f}s)", flush=True)
+            
+            # Save to cache
+            os.makedirs("data", exist_ok=True)
+            with open(cache_path, "w", encoding="utf-8") as f:
+                json.dump(all_chunks, f, ensure_ascii=False, indent=2)
+            print(f"  ✓ Saved enriched chunks to {cache_path}", flush=True)
+        else:
+            print("  ⚠️  M5 not implemented — using raw chunks", flush=True)
 
     # Step 3: Index (M2)
     t0 = time.time()
